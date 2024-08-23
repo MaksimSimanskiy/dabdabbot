@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+
+</head>
+<body class="bg-gray-100 min-h-screen font-sans" data-spy="scroll" data-target=".fixed-top">
+    <h1 class="flex items-center p-3 mb-2 justify-center border-b border-slate-400 border-dashed font-bold text-xl">Задания</h1>
+    <h1 class="flex items-center my-2 p-3 justify-center border-b border-slate-400 border-dashed text-center  text-slate-600 ">Выполняйте задания и зарабатывайте очки - да воздастся каждому по заслугам!</h1>
+    <div class="flex items-left flex-wrap justify-center">
+        <div *ngFor="let task of tasks" class="task w-11/12">
+            <div class="grid grid-cols-5 my-2 gap-1 content-center items-center rounded-xl shadow-sm shadow-slate-500 p-3">
+                <img *ngIf="task.image" [src]="task.image" alt="{{ task.title }}" class="h-12 w-12 ">
+                <div class="col-span-3 ">
+                    <h2 class="border-b border-slate-400 pb-1 mr-1 border-dashed text-balance">{{ task.title }}</h2>
+                    <p>+{{ task.points }}</p>
+                </div>
+                
+                <ng-container *ngIf="!task.completed; else completedLink">
+                    <a *ngIf="!loadingTasks[task._id]; else loading" (click)="startTask(task)" href="{{ task.url }}" target="_blank" class="h-8 pl-1 pr-1 pt-1.5 text-sm col-span-1 rounded-2xl ring-1 ring-slate-600 text-center self-center bg-slate-700 text-white">Начать</a>
+                    <ng-template #loading>
+                        <svg class="spinner" viewBox="0 0 50 50">
+                            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                          </svg><!-- Здесь добавьте вашу анимацию загрузки -->
+                    </ng-template>
+                </ng-container>
+        
+                <ng-template #completedLink>
+                    <img [src]="'img/done.svg'" alt="Выполнено" class="h-10 w-10 pl-3" /> <!-- Ваше изображение галочки -->
+                </ng-template>
+            </div>
+        </div>
+        
+    </div>
+
+</body>
+
+</html>

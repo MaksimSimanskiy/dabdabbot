@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Main</title>
+
+</head>
+<body class=" bg-gray-100 flex items-center flex-wrap justify-center min-h-screen font-sans">
+    <div class="flex flex-col items-center">
+        <div [innerHTML]="hello"></div>
+            <button (click)="handleClick()" class="dab btn-press w-32 h-32 bg-cover bg-center rounded-full shadow-lg shadow-black focus:outline-none " >
+    </button>
+    <div class="mt-4 text-lg font-semibold">
+        Количество очков: {{ data.cachedPoints }} <br> Ваш айди {{tg.UserId}} <br> Ваше устройство {{tg.Device}}
+    </div>
+</div>
+</body>
+</html>
