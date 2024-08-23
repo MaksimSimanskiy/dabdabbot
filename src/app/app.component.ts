@@ -58,6 +58,7 @@ export class AppComponent implements OnInit{
             if (v.message === "User not found") {
               this.main.createUser();
             } else {
+              this.user.getCountRefs();
               this.data.cashUserData(v);
                 this.data.cashUserPoints(v.points);
                 this.data.cashUserTask(v.tasks);

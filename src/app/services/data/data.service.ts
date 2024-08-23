@@ -24,8 +24,9 @@ export class DataService {
   public cachedTask: any[] = null;
   public completedTask: any[] = null;
   public cachedPoints: number | 0 = 0;
+  public referals: any | 0 = 0;
 
-  constructor(public http: HttpClient) {}
+  constructor(public http:HttpClient) {}
 
   // Метод для получения данных пользователя
 
