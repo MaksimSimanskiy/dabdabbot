@@ -24,7 +24,8 @@ export class DataService {
   public cachedTask: any[] = null;
   public completedTask: any[] = null;
   public cachedPoints: number | 0 = 0;
-  public referals: any | 0 = 0;
+  public ref_url: string;
+  private _referals: any[] = [];
 
   constructor(public http:HttpClient) {}
 
@@ -43,8 +44,17 @@ export class DataService {
   cashAllTask(data: any): void {
     this.cachedTask = data;
   }
+  public set referals(data:any) {
+    this._referals.push(data);
+  }
+  public get referals():any{
+    return this._referals;
+
+  }
   cashUserPoints(points: number): void{
     this.cachedPoints += points;
   }
-
+  createRefUrl():string {
+    return "https://t.me/da_da_dab_dab_bot/start?startapp=" + this.cachedUserData.referral_code;
+  }
 }

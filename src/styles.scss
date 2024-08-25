@@ -43,7 +43,7 @@
 /* Стили для прелоадера */
 #preloader {
   position: fixed;
-  top: 20px;
+  top: 0; /* Исправлено на 0 для центрирования на весь экран */
   left: 0;
   width: 100%;
   height: 100%;
@@ -53,23 +53,24 @@
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  transition: opacity 1s ease-out, visibility 1s ease-out; /* Анимация для плавного исчезновения */
+  transition: opacity 1s ease-in-out; /* Плавное исчезновение */
   opacity: 1;
-  visibility: visible;
 }
+
 #preloader .spinner {
   border: 16px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid hsl(117, 88%, 74%);;
+  border-top: 16px solid hsl(117, 88%, 74%);
   width: 120px;
   height: 120px;
   animation: spin 3s linear infinite;
 }
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-.fade-out{
-  opacity: 0;
-  visibility: hidden;
+
+.fade-out {
+  opacity: 0; /* Плавное исчезновение */
 }

@@ -1,0 +1,21 @@
+.tooltip-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 1s ease-in-out; /* Плавное исчезновение */
+}
+
+.hide {
+  opacity: 0; /* Скрываем элемент, делая его полностью прозрачным */
+}
+.tooltip-content {
+    font-size: 16px;
+    text-align: center;
+  } 

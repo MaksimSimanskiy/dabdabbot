@@ -58,8 +58,9 @@ export class AppComponent implements OnInit{
             if (v.message === "User not found") {
               this.main.createUser();
             } else {
-              this.user.getCountRefs();
+              this.getRefs();
               this.data.cashUserData(v);
+              this.data.ref_url =  this.data.createRefUrl();
                 this.data.cashUserPoints(v.points);
                 this.data.cashUserTask(v.tasks);
             }
@@ -74,12 +75,11 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     
   }
-  private removePreloader() {
-    const preloader = document.getElementById('preloader');
-    preloader.classList.add('fade-out');
-    if (preloader) {
-      preloader.style.display = 'none';
-    }
+  private getRefs (){
+    this.user.getRefs().subscribe(v =>{
+      this.data.referals = v;
+      console.log(v);
+    })
   }
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];

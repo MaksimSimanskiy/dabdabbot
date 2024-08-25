@@ -22,13 +22,16 @@
     <div class="spinner"></div>
   </div>
   <script>
-    window.addEventListener('load', function () {
-      preloader = document.getElementById('preloader');
-      preloader.classList.add('fade-out');
-      setTimeout(() => {
-        preloader.style.display = 'none';
-      }, 3000); // Скрываем элемент после завершения анимации
-    });
+window.addEventListener('load', function () {
+   preloader = document.getElementById('preloader');
+  
+  preloader.classList.add('fade-out');
+  
+  setTimeout(() => {
+    preloader.style.visibility = 'hidden'; // Убираем видимость после завершения анимации
+    preloader.style.display = 'none'; // Отключаем прелоадер через 1 секунду
+  }, 3000); // Время соответствует длительности перехода
+});
   </script>
 </body>
 </html>

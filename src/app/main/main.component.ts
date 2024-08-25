@@ -23,6 +23,7 @@ export class MainComponent implements OnInit, OnDestroy {
   route = inject(ActivatedRoute); // Инжектируем ActivatedRoute
   hello = "";
   queryParams: any = {};
+  ref = "";
   public clickCount:number = 0;
   private clickTimeout: any;
   constructor() {
@@ -35,15 +36,13 @@ export class MainComponent implements OnInit, OnDestroy {
       this.data.cashUserData(v); // Кэшируем данные пользователя
     });
   }
-
   ngOnInit(): void {
-
-
     this.route.queryParamMap.subscribe(params => {
       params.keys.forEach(key => {
         this.queryParams[key] = params.get(key);
       });
-      console.log('Received Query Params:', this.queryParams);
+      this.ref = this.tg.RefId;
+      console.log('Received Query Params:', this.ref);
       console.log(this.data);
     });
   }

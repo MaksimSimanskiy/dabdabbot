@@ -22,6 +22,7 @@ export class TelegramService {
     
     this.tg = this.window.Telegram.WebApp;
     
+    
   
   }
   get MainButton ():TgButton {
@@ -38,6 +39,10 @@ export class TelegramService {
     const initDataUnsafe = this.tg.initDataUnsafe;
     return initDataUnsafe && initDataUnsafe.user ? initDataUnsafe.user.id : "123456";
     //return "123456";
+  }
+  get RefId(): string | null {
+    const ref = this.tg.initDataUnsafe.start_param;
+    return ref;
   }
   get UserName(): string | null {
     // initDataUnsafe содержит информацию о пользователе

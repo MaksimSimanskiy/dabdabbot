@@ -11,6 +11,7 @@ import { DataService } from '../services/data/data.service';
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
 })
+
 export class UserComponent extends DataService{
   
   tgService = inject(TelegramService);
@@ -25,8 +26,8 @@ export class UserComponent extends DataService{
     
   }
 
-  getCountRefs(headers = this.headers_json ): Observable<any> {
-    return this.http.get<any>(this.apiUrl + `users/tg/${this.tg_id}/referrals`,{headers});
+  getRefs(headers = this.headers_json ): Observable<any> {
+    return this.http.get<any>(this.apiUrl + `users/tg/${this.tg_id}/referrals/details`,{headers});
   }
 
   getUserPoints(headers = this.headers_json): Observable<any> {
