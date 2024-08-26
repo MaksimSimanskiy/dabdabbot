@@ -30,6 +30,9 @@ export class UserComponent extends DataService{
   getRefs(headers = this.headers_json ): Observable<any> {
     return this.http.get<any>(this.apiUrl + `users/tg/${this.tg_id}/referrals/details`,{headers});
   }
+  getRank(headers = this.headers_json ): Observable<any> {
+    return this.http.get<any>(this.apiUrl + `users/tg/${this.tg_id}/rank`,{headers});
+  }
 
   getUserPoints(headers = this.headers_json): Observable<any> {
 
