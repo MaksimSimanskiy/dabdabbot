@@ -21,7 +21,7 @@ export class MainComponent implements OnInit, OnDestroy {
   user = inject(UserComponent);
   data = inject(DataService); // Инжектируем DataService
   route = inject(ActivatedRoute); // Инжектируем ActivatedRoute
-  hello = "";
+  hello:string;
   queryParams: any = {};
   ref = "";
   public clickCount:number = 0;
@@ -30,25 +30,13 @@ export class MainComponent implements OnInit, OnDestroy {
 
   }
 
-  createUser() {
-    this.user.createUser(this.queryParams['ref']).subscribe((v) => {
-      this.hello = `<br> Приветствуем ${this.tg.UserName}`;
-      this.data.cashUserData(v); // Кэшируем данные пользователя
-    });
-  }
+
   ngOnInit(): void {
-    this.route.queryParamMap.subscribe(params => {
-      params.keys.forEach(key => {
-        this.queryParams[key] = params.get(key);
-      });
-      this.ref = this.tg.RefId;
-      console.log('Received Query Params:', this.ref);
-      console.log(this.data);
-    });
+    
   }
 
   ngOnDestroy(): void {
-    this.hello = "";
+    //this.hello = "";
 
   }
 

@@ -25,18 +25,27 @@ export class DataService {
   public completedTask: any[] = null;
   public cachedPoints: number | 0 = 0;
   public ref_url: string;
+  public ref_code: string;
   private _referals: any[] = [];
 
-  constructor(public http:HttpClient) {}
+  constructor(public http:HttpClient) {
+
+  }
 
   // Метод для получения данных пользователя
-
+ 
   // Метод для обновления данных пользователя и кэширования
   cashUserData(data: any): void {
     this.cachedUserData = data;
+    this.cachedPoints = data.points;
+    console.log(this.cachedUserData.referral_code);
+
   }
   cashTop(data: any): void {
     this.cachedTop = data;
+  }
+  cashRefCode(data: any): void {
+    this.ref_code = data;
   }
   cashUserTask(data: any): void {
     this.completedTask = data;
@@ -51,6 +60,7 @@ export class DataService {
     return this._referals;
 
   }
+ 
   cashUserPoints(points: number): void{
     this.cachedPoints += points;
   }

@@ -51,34 +51,37 @@ export class AppComponent implements OnInit{
   task = inject(TaskComponent);
   constructor(){
     this.telegram.tg.ready();
+    
+  }
+  createUser() {
+    this.user.createUser().subscribe((v) => {
+      this.main.hello = `<br> Приветствуем ${this.telegram.UserName}`;
+      console.log(this.main.hello);
+      this.getRefs ();
+      this.data.cashUserData(v);
+    });
+  }
+  ngOnInit(): void {
     if( this.data.cachedUserData == null) {
   
       this.user.getUser().subscribe({
         next: (v) => {
             if (v.message === "User not found") {
-              this.main.createUser();
+              this.createUser();
             } else {
-              this.getRefs();
-              this.data.cashUserData(v);
-              this.data.ref_url =  this.data.createRefUrl();
-                this.data.cashUserPoints(v.points);
-                this.data.cashUserTask(v.tasks);
             }
+            this.getRefs ();
+            this.data.cashUserData(v);
 
         },
         error: (e) => console.log(e),
       });
-    } else {
-  
-    }
+    } 
   }
-  ngOnInit(): void {
-    
-  }
+ 
   private getRefs (){
     this.user.getRefs().subscribe(v =>{
       this.data.referals = v;
-      console.log(v);
     })
   }
   prepareRoute(outlet: RouterOutlet) {

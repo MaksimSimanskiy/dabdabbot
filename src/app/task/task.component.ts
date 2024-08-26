@@ -18,7 +18,8 @@ export class TaskComponent extends DataService  {
 
   private router: Router;
   private route: ActivatedRoute;
-  private user = inject(UserComponent);
+  private tg = inject(TelegramService);
+  tg_id = this.tg.UserId;
   //this.goBack = this.goBack.bind(this);
  
   createTask(data: any): Observable<any> {
@@ -28,14 +29,14 @@ export class TaskComponent extends DataService  {
     return this.http.get<any>(this.apiUrl + `tasks/${task_id}`,{headers});
   }
 
-  addAllTasks(tg_id = this.user.tg_id,headers = this.headers_json): Observable<any> {
+  addAllTasks(tg_id = this.tg_id ,headers = this.headers_json): Observable<any> {
     return this.http.post<any>(this.apiUrl + `users/tg/${tg_id}/tasks`,`{}`,{headers}); 
   }
   getAllTask(headers = this.headers_json ): Observable<any> {
     return this.http.get<any>(this.apiUrl + `tasks`,{headers});
   }
   addTaskForUser(task_id: string,headers = this.headers_json): Observable<any> {
-    return this.http.post<any>(this.apiUrl + `users/tg/${this.user.tg_id}/task`, `{"taskId":"${task_id}"}`,{headers});
+    return this.http.post<any>(this.apiUrl + `users/tg/${this.tg_id}/task`, `{"taskId":"${task_id}"}`,{headers});
   }
   goBack(){
     this.router.navigate(['/']);

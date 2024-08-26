@@ -13,7 +13,7 @@
     </h1>
     <div class=" flex items-center my-2 p-3 justify-center border-b border-slate-400 border-dashed text-center">
         <h1 class="text-sm grid grid-cols-2 gap-2  cursor-pointer">
-            <span class="text-slate-600">Ваш реферальный код</span> <span class="border-2 border-slate-600 rounded-lg text-black " (click)="copyToClipboard(data.ref_url)">{{ data.cachedUserData.referral_code }}</span> 
+            <span class="text-slate-600">Ваш реферальный код</span> <span class="border-2 border-slate-600 rounded-lg text-black " (click)="copyToClipboard(data.ref_url)">{{ getRef() }}</span> 
         </h1>        
     </div>
 

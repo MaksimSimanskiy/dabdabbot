@@ -15,14 +15,15 @@ import { DataService } from '../services/data/data.service';
 export class UserComponent extends DataService{
   
   tgService = inject(TelegramService);
-  public tg_id = this.tgService.UserId;
-  public user_name = this.tgService.UserName;
+  private tg_id = this.tgService.UserId;
+  private user_name = this.tgService.UserName;
+  private refer = this.tgService.RefId;
   public points: number = 0; // Накопленные очки
 
 
 
-  createUser(  refer:string,headers = this.headers_json ): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'users', `{"name":"${this.user_name}","tg_id":"${this.tg_id}","invited_by":"${refer}"}`,{headers});
+  createUser(headers = this.headers_json ): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'users', `{"name":"${this.user_name}","tg_id":"${this.tg_id}","invited_by":"${this.refer}"}`,{headers});
     
   }
 

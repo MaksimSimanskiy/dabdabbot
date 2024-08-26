@@ -37,7 +37,7 @@ export class TelegramService {
   get UserId(): string | null {
     // initDataUnsafe содержит информацию о пользователе
     const initDataUnsafe = this.tg.initDataUnsafe;
-    return initDataUnsafe && initDataUnsafe.user ? initDataUnsafe.user.id : "123456";
+    return initDataUnsafe && initDataUnsafe.user ? initDataUnsafe.user.id : "1234567";
     //return "123456";
   }
   get RefId(): string | null {
